@@ -8,7 +8,7 @@ def load_dictionary
     dict_array.push(dict_file.readline.strip)
   end
   # Filter out all of the words that aren't between 5 and 12 characters
-  filtered_array = dict_array.select{|x| x.length > 4 && x.length < 13}
+  filtered_array = dict_array.select{|x| x.length > 9 && x.length < 13}
   # Return this filtered_array, we'll use this for the game
   filtered_array
 end
@@ -56,7 +56,7 @@ def game_loop
 
   while player_guess != secret_word_arr && remaining_incorrect_guesses >= 0
     puts "_________________________________________"
-    puts "The secret word is: #{secret_word}"
+    #puts "The secret word is: #{secret_word}"
     puts "Your current guess is: #{player_guess}" ; puts "\n"
     # get the letter
     player_letter = player_guess()
@@ -84,6 +84,7 @@ def game_loop
   end
 
   puts "Your final answer was: #{player_guess}"
+  puts "The correct answer was: #{secret_word}"
   if player_guess == secret_word_arr
     puts "You guessed the word! You win!"
   else
