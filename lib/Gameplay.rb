@@ -32,4 +32,16 @@ module Gameplay
     player_guess.downcase!
     player_guess
   end
+
+  def get_letter_index(letter, word) # get all the indexes of the letter
+    number_of_occurences = word.count(letter)
+    index_array = []
+    temp_word = String.new(word)
+    while number_of_occurences > 0 # whilst there are still indexes to be found
+      index_array.push(temp_word.index(letter))
+      temp_word.sub!(letter, '0')
+      number_of_occurences -= 1
+    end
+    index_array
+  end
 end

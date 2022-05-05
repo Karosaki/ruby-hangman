@@ -1,6 +1,7 @@
 require_relative 'Player'
 require_relative 'Game'
 require_relative 'Gameplay'
+include Gameplay
 
 john = Player.new("John")
 jane = Player.new("Jane")
@@ -8,4 +9,12 @@ jane = Player.new("Jane")
 puts john
 puts jane
 
-load_dictionary()
+dictionary = load_dictionary()
+
+# First instance of the game
+my_game = Game.new(john, secret_word = get_word(dictionary))
+
+puts "The player of this game: #{my_game.player.name}"
+puts "The secret word of this game: #{my_game.secret_word}"
+
+my_game.game_loop()
